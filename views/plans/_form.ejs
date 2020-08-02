@@ -1,0 +1,21 @@
+<form action="<%= (typeof actionPath === 'undefined') ? '/plans' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" class="form-control" value="<%= formData.title %>">
+  </div>
+
+  <div class="form-group">
+    <label for="strategy">Strategy</label>
+    <textarea name="strategy" class="form-control summernote">
+      <%= formData.strategy %>
+    </textarea>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-dark">Submit</button>
+  </div>
+</form>

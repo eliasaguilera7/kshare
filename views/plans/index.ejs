@@ -1,0 +1,50 @@
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>Plans</h1>
+  </header>
+  <hr>
+  <div class="content">
+    <% for (let plan of plans) { %>
+      <div class="card my-3">
+        <div class="card-header clearfix">
+          <div class=" float-left">
+            <h5 class="card-title"><%= plan.title %></h5>
+            <% if (typeof plan.user !== 'undefined') { %>
+              <small>~ <%= plan.user.fullname %></small>
+            <% } %>
+          </div>
+
+          <div class="float-right">
+            <small><%= plan.updatedAt %></small>
+          </div>
+        </div>
+
+        <div class="card-body">          
+          <p class="card-text">
+            <%= plan.strategy %>
+          </p>
+          <a href="/plans/<%= plan.id %>">more...</a>
+        </div>
+
+        <% if (authorized && (typeof plan.user === 'undefined' || plan.user.email === email)) { %>
+          <div class="card-footer">
+            <a href="/plans/<%= plan.id %>/edit">
+              <i class="fa fa-edit"></i>
+            </a>
+            &nbsp;/&nbsp;
+            <form class="form-inline" action="/plans/delete" method="post" onsubmit="return confirm('Are you sure you want to delete all your hard work?');">
+              <input type="hidden" value="<%= plan.id %>" name="id">
+              <button class="delete" type="submit">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>

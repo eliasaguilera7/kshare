@@ -1,0 +1,23 @@
+<%- include ('../partials/header') %>
+
+<div class="container my-5">
+  <header>
+    <h1>
+      <%= plan.title %>
+      <a href="/plans/<%= plan.id %>/edit">
+        <i class="fa fa-edit"></i>
+      </a>
+    </h1>
+    <br>
+    <small>
+      <%= (plan.updatedAt.toLocaleString("en-CA")) %>
+    </small>
+    <p><strong>By: <%= plan.user.fullname %></strong></p>
+  </header>
+  <hr>
+  <div class="strategy">
+    <%- plan.strategy %>
+  </div>
+</div>
+
+<%- include ('../partials/footer') %>
