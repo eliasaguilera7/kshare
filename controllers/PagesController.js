@@ -6,6 +6,7 @@ exports.home = (req, res) => {
   });
 };
 
+
 exports.about = (req, res) => {
   res.render(`${viewPath}/about`, {
     pageTitle: 'About Me'
